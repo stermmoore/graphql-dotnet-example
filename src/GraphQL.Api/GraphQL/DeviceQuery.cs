@@ -12,6 +12,17 @@ namespace GraphQL.Api.GraphQL
                 "devices",
                 resolve: context => deviceRepository.GetDevices()
             );
+
+            Field<ListGraphType<DeviceType>>(
+                "devicesInState",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<StringGraphType>> {
+                    Name = "state"
+                }),
+                resolve: context => {
+                    var state = context.GetArgument<string>("state");
+                    return deviceRepository.GetDevices(state);
+                }
+            );
         }
     }
 }
