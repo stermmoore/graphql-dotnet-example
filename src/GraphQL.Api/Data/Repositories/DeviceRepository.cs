@@ -45,9 +45,11 @@ namespace GraphQL.Api.Data.Repositories
             return DEVICES;
         }
 
-        public async Task<IEnumerable<StateHistory>> GetDeviceHistory(List<string> deviceIds)
+        public async Task<ILookup<string, StateHistory>> GetDeviceHistories(IEnumerable<string> deviceIds)
         {
-            return STATE_HISTORIES.Where(s => deviceIds.Contains(s.DeviceId));
+            return STATE_HISTORIES
+                .Where(s => deviceIds.Contains(s.DeviceId))
+                .ToLookup(s => s.DeviceId);
         }
 
         public async Task<IEnumerable<StateHistory>> GetDeviceHistory(string deviceId)

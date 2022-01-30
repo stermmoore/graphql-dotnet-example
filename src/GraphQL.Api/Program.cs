@@ -24,6 +24,7 @@ builder.Services.AddGraphQL(options =>
 {
     options.EnableMetrics = true;
 })
+.AddDataLoader()
 .AddErrorInfoProvider(opt => opt.ExposeExceptionStackTrace = true)
 .AddSystemTextJson();
 
