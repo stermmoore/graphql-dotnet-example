@@ -14,6 +14,7 @@ builder.Services.AddSingleton<IDocumentWriter, DocumentWriter>();
 builder.Services.AddSingleton<DeviceRepository>();
 builder.Services.AddSingleton<DeviceQuery>();
 builder.Services.AddSingleton<DeviceType>();
+builder.Services.AddSingleton<StateHistoryType>();
 builder.Services.AddSingleton<ISchema, DeviceSchema>();
 
 
